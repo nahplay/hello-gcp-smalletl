@@ -19,8 +19,8 @@ def load_gcp(source, current_date):
     client = storage.Client()
     bucket = client.bucket(os.environ['PROJECT_BUCKET'])
 
-    blob = bucket.blob(f'{source}/load_date={current_date}/bike_data_{int(time.time())}.csv')
-    blob.upload_from_filename('bike_data.csv')
+    blob = bucket.blob(f'{source}/load_date={current_date}/{source}_{int(time.time())}.csv')
+    blob.upload_from_filename(f'{source}.csv')
 
     print("Data is successfully uploaded to Google Cloud Storage")
 
